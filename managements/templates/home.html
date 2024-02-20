@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Bus Ticket Reservation System</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+<div id="loader"> </div>
+    <h1>WELCOME DIGITAL BUS TICKET RESERVATION SYSTEM</h1>
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <header>
+        <!-- Header content -->
+    </header>
+
+    <nav>
+        <ul>
+            
+            <li><a href="{% url 'bus_detail' %}">View Buses available</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Routes</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="welcome-message">
+            <h2>Welcome to the Digital Bus Ticket Reservation System</h2>
+            <p>Embark on a journey of convenience, flexibility, and reliability with our revolutionary bus booking system. Our innovative platform redefines the way you book your bus tickets, offering unparalleled convenience, comprehensive route options, and a streamlined user experience.</p>
+            <p>Experience hassle-free bus ticket booking and explore a wide range of destinations with ease. Whether you're planning a spontaneous getaway or a meticulously organized journey, our system empowers you to travel on your terms.</p>
+        </div>
+
+        <div class="imagees">
+            <img src="{% static 'images/bus1.jpeg' %}" alt="Logo">
+            
+        </div>
+    </main>
+
+    <footer>
+        <b>Follow us on social media:</b>
+        <i class="fa fa-instagram" aria-hidden="true"> Instagram</i>
+        <i class="fas fa-linkedin-in"> LinkedIn</i>
+        <i class="fa fa-twitter" aria-hidden="true"> Twitter</i>
+    </footer>
+
+    <script>
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!-- search_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Form</title>
+</head>
+<body>
+    <h1>Search for Vehicles</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Departure City -->
+        <label for="id_departure_city">Departure City:</label>
+        <input type="text" id="id_departure_city" name="departure_city">
+        
+        <!-- Arrival City -->
+        <label for="id_arrival_city">Arrival City:</label>
+        <input type="text" id="id_arrival_city" name="arrival_city">
+        
+        <!-- Departure Date -->
+        <label for="id_departure_date">Departure Date:</label>
+        <input type="date" id="id_departure_date" name="departure_date">
+        
+        <!-- Arrival Date -->
+        <label for="id_arrival_date">Arrival Date:</label>
+        <input type="date" id="id_arrival_date" name="arrival_date">
+        
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>

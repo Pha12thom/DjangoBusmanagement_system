@@ -1,0 +1,23 @@
+<!-- bus_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buses</title>
+</head>
+<body>
+    <h1>Bus Details</h1>
+    <ul>
+        <li>Bus Number: 123</li>
+        {% for buses in Bus %}
+        <li>Bus no: {{buses.id}}</li>
+        <li>Bus Name: {{buses.name}}</li>
+        <li>Bus color: {{buses.color}}</li>
+        <li>Bus Capacity: {{buses.seats}}</li>
+
+        {% endfor %}
+    </ul>
+</body>
+</html>

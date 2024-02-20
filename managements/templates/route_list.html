@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route List</title>
+</head>
+<body>
+    <h1>Matching Routes</h1>
+    {% if routes %}
+        <ul>
+            {% for route in routes %}
+                <li>Departure City: {{ route.departure_city }}</li>
+                <li>Arrival City: {{ route.arrival_city }}</li>
+                <li>Distance: {{ route.distance }}</li>
+                <li>Time Taken: {{ route.timeTaken }}</li>
+                <li>Buses:</li>
+                <ul>
+                    {% for bus in route.buses.all %}
+                        <li>Name: {{ bus.name }}</li>
+                        <li>Color: {{ bus.color }}</li>
+                        <li>Number Plate: {{ bus.no_plate }}</li>
+                        <li>Seats: {{ bus.seats }}</li>
+                        <!-- Add other bus details as needed -->
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No matching routes found.</p>
+    {% endif %}
+</body>
+</html>

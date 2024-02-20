@@ -1,0 +1,31 @@
+<!-- login.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="login-btn">Login</button>
+            <div class="spinner" id="spinner"></div>
+        </form>
+        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+        {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById('login-btn').addEventListener('click', function() {
+            document.getElementById('spinner').style.display = 'inline-block';
+        });
+    </script>
+</body>
+</html>
