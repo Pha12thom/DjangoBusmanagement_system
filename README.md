@@ -1,4 +1,4 @@
-# Bus Management System (Django)
+# Bus Management System with By Milugo Geofrey Ouma(Django)
 
 Welcome to the Bus Management System, a web application i built using Django!
 
