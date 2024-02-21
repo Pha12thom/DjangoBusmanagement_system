@@ -1,4 +1,4 @@
-# Bus Management System (Django)
+# Bus Management System with By Milugo Geofrey Ouma(Django)
 
 Welcome to the Bus Management System, a web application i built using Django!
 
@@ -16,6 +16,7 @@ The Bus Management System is a comprehensive solution designed to streamline bus
 - **Administrative Panel:** Admin dashboard for managing buses, routes, schedules, payments, and user accounts.
 
 ## Installation
+0. Fork this repository
 1. Clone the repository: `git clone https://github.com/pha12thom/bus-management-system.git`
 2. Navigate to the project directory: `cd busmanagementsystem`
 3. Install dependencies: `pip install -r requirements.txt`
