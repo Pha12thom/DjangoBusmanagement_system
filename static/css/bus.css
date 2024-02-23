@@ -1,0 +1,9 @@
+bus {
+    display: table;
+    border-radius: 20px;
+    padding: 10px solid;
+    border: 20px solid brown;
+    border-color: brown;
+    flex-direction: column-reverse;
+    align-items: baseline;
+}

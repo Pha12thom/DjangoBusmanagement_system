@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import UserProfile, Ticket
+from .models import UserProfile, Ticket, CITIES_GROUPS, CITIES, Bus
 
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -35,6 +35,19 @@ class BookingForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
-    departure_city = forms.CharField(max_length=100)
-    arrival_city = forms.CharField(max_length=100)
-    departure_date = forms.DateField()
+    departure_city=  forms.ChoiceField(choices=CITIES)
+    arrival_city=  forms.ChoiceField(choices=CITIES)
+    departure_time=forms.DateField()
+    
+    
+"""
+
+class BusSearchForm(forms.Form):
+    search_date = forms.DateField(label='Search Date')
+    
+
+class BusForm(forms.Form):
+    search_date = forms.DateField(label='Search Date: yyyy-mm-dd')
+    from_city = forms.CharField(max_length=150, label='From City')
+    to_city = forms.CharField(max_length=150, label='To city')
+"""

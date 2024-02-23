@@ -1,5 +1,3 @@
-
-{% load static %}
 <!-- search_results.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -7,18 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-    <link rel="stylesheet" href="{% static 'css/bus.css' %}">
 </head>
 <body>
     {% if matching_buses %}
         {% for bus in matching_buses %}
-        <div class='bus'>
-            <li> Bus no: {{ bus.id }}</li>
-            <h3>Name: {{ bus.name }}</h3>
-            <p>From: {{ bus.departure_city }} - To {{ bus.arrival_city }}</p>
-            <p> Departure Date: {{ bus.departure_time }}</p>
-            <p> Departure Time: {{ bus.depart_time }}</p>
-        </div>
+            <li> Color: {{ bus.color }}  </li>
+            <li>{{ bus.name }} - Departure: {{ bus.departure_time }}</li>
         {% endfor %}
         </ul>
     {% else %}

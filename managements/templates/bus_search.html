@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        search for buses
+    </title>
+</head>
+<body>
+
+
+<h2> Buses departing on {{ search_date }}
+    {% if searched_bus %}
+        
+    <ul>
+            {% for bus in searched_bus %}
+                <li> Departure date: {{ bus.departure}} </li>
+                <li> no of seats: {{ bus.No_of_seats }}</li>
+                <li> License: {{ bus.license }}</li>
+                <li> Name: {{ bus.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <P> No buses found for selected date </p>
+    {% endif %}
+
+        </body>

@@ -12,10 +12,15 @@
     <ul>
         <li>Bus Number: 123</li>
         {% for buses in Bus %}
-        <li>Bus no: {{buses.id}}</li>
-        <li>Bus Name: {{buses.name}}</li>
-        <li>Bus color: {{buses.color}}</li>
-        <li>Bus Capacity: {{buses.seats}}</li>
+            {% if buses.id == 1 %}        
+                <li>Bus no: {{buses.id}}</li>
+                <li>Bus Name: {{buses.name}}</li>
+                <li>Bus color: {{buses.color}}</li>
+                <li>Bus Capacity: {{buses.seats}}</li>
+                <li>Bus departure city: {{buses.departure_city}}
+                <li> Departure time: {{buses.departure_time}}
+            {% endif %}
+            
 
         {% endfor %}
     </ul>

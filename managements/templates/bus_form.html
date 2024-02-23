@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head>
+    <title> search buses</title>
+</head>
+<body>
+    <form method='POST' type='date'>
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type='submit'>Search</button>
+        <i>input date in format 'YYYY-MM-DD' example '2024-02-22'</i>
+    </form>
+</body> 
