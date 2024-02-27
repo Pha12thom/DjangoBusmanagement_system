@@ -9,6 +9,7 @@
     <title>Search Results</title>
     <link rel="stylesheet" href="{% static 'css/bus.css' %}">
 </head>
+<b><a href="{% url 'search_form' %}">search</a></b>
 <body>
     {% if matching_buses %}
         {% for bus in matching_buses %}
