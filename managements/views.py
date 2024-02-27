@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from .forms import RegistrationForm, LoginForm,  SearchForm
 from django.contrib.auth.models import User
-from .models import Route, Bus
+from .models import Route, Bus, UserProfile
 
 
 
@@ -85,6 +85,8 @@ def search_form(request):
 
 
 
+
+
 #3 search
 def bus_detail(request):
     buses = Bus.objects.all()
@@ -92,6 +94,7 @@ def bus_detail(request):
         'Bus': buses
     }
     return render(request, 'bus_detail.html', context)
+
 """
 #2 search
 def search(request):
