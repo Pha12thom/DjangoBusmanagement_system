@@ -21,7 +21,7 @@ class Bus(models.Model):
     seats = models.IntegerField()
     departure_city = models.CharField(max_length=150, choices=CITIES)
     arrival_city = models.CharField(max_length=100, null=True, choices=CITIES)
-    departure_time = models.DateField() 
+    departure_time = models.DateTimeField()  # Updated field to use DateTimeField
     depart_time = models.TimeField(null=True)
     
     def __str__(self):
@@ -82,9 +82,10 @@ class Testing(models.Model):
     
 CITIES_GROUPS = [
     ('Nairobi', 'Kisumu', 'Mombasa','Nakuru'),
-    ('Siaya', 'Meru', 'Kisii'),
-    ('Narok', 'Nyeri'),
-    ('Thika',  'Turkana' ),
+    ('Siaya', 'Meru', 'Kisii', 'Bungoma'),
+    ('Narok', 'Nyeri', 'Migori', 'Busia'),
+    ('Thika',  'Turkana', 'Kitengela'),
 ]
+
 CITIES = [(city, city) for group in CITIES_GROUPS for city in group ]
 
