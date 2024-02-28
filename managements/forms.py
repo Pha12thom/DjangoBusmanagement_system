@@ -41,7 +41,6 @@ class SearchForm(forms.Form):
     
     
 """
-
 class BusSearchForm(forms.Form):
     search_date = forms.DateField(label='Search Date')
     

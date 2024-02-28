@@ -95,6 +95,7 @@ def bus_detail(request):
     }
     return render(request, 'bus_detail.html', context)
 
+
 """
 #2 search
 def search(request):
