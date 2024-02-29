@@ -1,30 +1,29 @@
-
 {% load static %}
-<!-- search_results.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-
 </head>
-<b><a href="{% url 'search_form' %}">search</a></b>
 <body>
+    <b><a href="{% url 'search_form' %}">Search</a></b>
     {% if matching_buses %}
-<a href  {% for bus in matching_buses %}
-        
-        <div class='bus'>
-            <li> Bus no: {{ bus.id }}</li>
-            <h3>Name: {{ bus.name }}</h3>
-            <p>From: {{ bus.departure_city }} - To {{ bus.arrival_city }}</p>
-            <p> Departure Date: {{ bus.departure_time }}</p>
-            <p> Departure Time: {{ bus.depart_time }}</p>
-        </div>   
+        <ul>
+        {% for bus in matching_buses %}
+            <div class='bus'>
+                <a href="{% url 'bus_detail' bus.id %}">
+                    <li>Bus no: {{ bus.id }}</li>
+                    <h3>Name: {{ bus.name }}</h3>
+                    <p>From: {{ bus.departure_city }} - To {{ bus.arrival_city }}</p>
+                    <p>Departure Date: {{ bus.departure_time }}</p>
+                    <p>Departure Time: {{ bus.depart_time }}</p>
+                </a>
+            </div>   
         {% endfor %}
         </ul>
     {% else %}
-        <p> No buses Available </p>
+        <p>No buses available</p>
     {% endif %}
 </body>
 </html>
