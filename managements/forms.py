@@ -39,6 +39,7 @@ class SearchForm(forms.Form):
     arrival_city=  forms.ChoiceField(choices=CITIES)
     departure_time = forms.DateField(
         label='Departure Date',
+        input_formats=["%Y-%m-%d", "%m/%d/%Y", "%m/%d/%y"],
         widget=forms.DateInput(attrs={'type': 'date'})
         )
 
