@@ -1,5 +1,5 @@
 body {
-    margin: 0;
+    
     padding: 0;
     backdrop-filter: blur(10px);
     background-image: url('bus2.jpeg');
@@ -215,7 +215,7 @@ main {
     border: 20px solid  rgb(52, 30, 71);
     backdrop-filter: blur(80px);
     display: inline-flex;
-    margin-top: 20px;
+    margin-top: 30px;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
