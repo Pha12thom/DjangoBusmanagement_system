@@ -51,5 +51,3 @@ class ViewsTest(TestCase):
         self.assertTemplateUsed(response, 'bus_detail.html')
 
     # Add more tests for other views as needed
-
-# Create your tests here.
