@@ -21,7 +21,7 @@ class Bus(models.Model):
     seats = models.IntegerField()
     departure_city = models.CharField(max_length=150, choices=CITIES)
     arrival_city = models.CharField(max_length=100, null=True, choices=CITIES)
-    departure_time = models.DateTimeField()  # Updated field to use DateTimeField
+    departure_time = models.DateField()  # Updated field to use DateTimeField
     depart_time = models.TimeField(null=True)
     
     def __str__(self):

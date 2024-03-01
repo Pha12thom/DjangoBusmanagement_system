@@ -37,15 +37,14 @@ class BookingForm(forms.ModelForm):
 class SearchForm(forms.Form):
     departure_city=  forms.ChoiceField(choices=CITIES)
     arrival_city=  forms.ChoiceField(choices=CITIES)
-    departure_time = forms.DateTimeField(
-        label='Departure Date', 
+    departure_time = forms.DateField(
+        label='Departure Date',
         input_formats=["%Y-%m-%d", "%m/%d/%Y", "%m/%d/%y"],
-        widget=forms.DateTimeInput(attrs={'type': 'date'})
+        widget=forms.DateInput(attrs={'type': 'date'})
         )
-    
+
     
 """
-
 class BusSearchForm(forms.Form):
     search_date = forms.DateField(label='Search Date')
     

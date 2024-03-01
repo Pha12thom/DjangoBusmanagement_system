@@ -95,6 +95,14 @@ def bus_detail(request):
     }
     return render(request, 'bus_detail.html', context)
 
+# In your views.py
+from django.shortcuts import render, get_object_or_404
+from .models import Bus
+
+def bus_detail(request, bus_id):
+    bus = get_object_or_404(Bus, pk=bus_id)
+    return render(request, 'bus_detail.html', {'bus': bus})
+
 """
 #2 search
 def search(request):

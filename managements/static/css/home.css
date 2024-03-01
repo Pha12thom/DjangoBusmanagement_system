@@ -1,5 +1,5 @@
 body {
-    margin: 0;
+    
     padding: 0;
     backdrop-filter: blur(10px);
     background-image: url('bus2.jpeg');
@@ -82,6 +82,7 @@ nav {
     z-index: 999;
     color: black;
     justify-content: space-around;
+    transform: matrix(1.05);
 }
 
 nav ul {
@@ -200,9 +201,7 @@ footer {
 #sidebar a:hover {
     background-color: #555;
 }
-main {
-    margin-top: 200px;
-}
+
 
 /* Welcome message styles */
 .welcome-message h1 {
@@ -215,7 +214,7 @@ main {
     border: 20px solid  rgb(52, 30, 71);
     backdrop-filter: blur(80px);
     display: inline-flex;
-    margin-top: 200px;
+    margin-top: 6rem;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
