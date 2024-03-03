@@ -9,6 +9,7 @@ urlpatterns = [
     path('search_form/', views.search_form, name='search_form'),
     path('bus_detail/', views.bus_detail, name='bus_detail'),
     path('bus/<int:bus_id>/', views.bus_detail, name='bus_detail'),
-    #path('search/', views.search, name='search'),
-    #path('bus_search/', views.bus_search, name='bus_search'),
+    path('seat-selection/', seat_selection, name='seat_selection'),
+    path('book-seat/<int:seat_number>/', book_seat, name='book_seat'),
+    path('confirm-booking/<int:seat_number>/', confirm_booking, name='confirm_booking'),
 ]
