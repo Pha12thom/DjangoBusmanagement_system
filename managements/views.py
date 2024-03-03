@@ -103,33 +103,41 @@ def bus_detail(request, bus_id):
     bus = get_object_or_404(Bus, pk=bus_id)
     return render(request, 'bus_detail.html', {'bus': bus})
 
-"""
-#2 search
-def search(request):
-    if request.method == 'POST':
-        form = BusSearchForm(request.POST)
-        if form.is_valid():
-            search_date = form.cleaned_data['search_date']
-            Searched_bus = Testing.objects.filter(departure_date=search_date)
-            return render(request, 'bus_search.html', {'searched_bus': Searched_bus})
-    else:
-        form = BusSearchForm()
-        return render(request, 'bus_form.html', {'form': form})
-    
 
-def bus_search(request):
-    if request.method == 'POST':
-        form = BusForm()
-        if form.is_valid():
-            cityFrom = form.cleaned_data['from_city']
-            cityTo = form.cleaned_data['to_city']
-            searchDate= form.cleaned_data['search_date']
-            
-            matching_buses = Bus.objects.filter(departure_city=cityFrom, arrival_city=cityTo, departure_time=searchDate)
-            return render(request, 'final_results.html', {'matching_buses': matching_buses})
-    else:
-        form = SearchForm()
-    return render(request, 'final_form.html', {'form': form})
 
-"""  
+
+# bus_booking/views.py
+from django.shortcuts import render, redirect
+from .models import Booking
+
+def seat_selection(request):
+    # Your logic to retrieve seat information goes here
+    seats = range(1, 13)
+    return render(request, 'selection.html', {'seats': seats})
+
+def book_seat(request, seat_number):
+    # Your logic to handle booking form submission goes here
+    if request.method == 'POST':
+        # Extract form data and perform booking logic
+        customer_name = request.POST.get('customer_name')
+        price = request.POST.get('price')
+        booking_date = request.POST.get('booking_date')
+        
+        # Save booking details to the database
+        booking = Booking.objects.create(
+            customer_name=customer_name,
+            seat_number=seat_number,
+            price=price,
+            booking_date=booking_date
+        )
+        
+        return redirect('confirm_booking', seat_number=seat_number)
+
+    return render(request, 'seat.html', {'seat_number': seat_number})
+
+def confirm_booking(request, seat_number):
+    # Your logic to display booking confirmation details goes here
+    booking = Booking.objects.get(seat_number=seat_number)
+    return render(request, 'booking.html', {'booking': booking})
+
     
