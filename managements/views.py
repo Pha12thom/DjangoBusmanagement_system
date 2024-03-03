@@ -118,9 +118,9 @@ def seat_selection(request):
 
 
 def book_seat(request, seat_number):
-    # Your logic to handle booking form submission goes here
+    #logic to handle booking form submission goes here
     if request.method == 'POST':
-        # Extract form data and perform booking logic
+    
         customer_name = request.POST.get('customer_name')
         price = request.POST.get('price')
         booking_date = request.POST.get('booking_date')
@@ -141,7 +141,7 @@ def book_seat(request, seat_number):
 
 
 def confirm_booking(request, seat_number):
-    # Your logic to display booking confirmation details goes here
+    #  display booking confirmation 
     booking = Booking.objects.get(seat_number=seat_number)
     return render(request, 'booking.html', {'booking': booking})
 
