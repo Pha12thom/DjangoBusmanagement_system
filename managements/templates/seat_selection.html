@@ -1,0 +1,23 @@
+<!-- bus_booking/templates/bus_booking/seat_selection.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection</title>
+</head>
+<body>
+    <h1>Seat Selection</h1>
+    <form action="{% url 'book_seat' 0 %}" method="post">
+        {% csrf_token %}
+        {% for seat in seats %}
+            <label for="seat{{ seat }}">
+                <input type="radio" id="seat{{ seat }}" name="seat_number" value="{{ seat }}">
+                Seat {{ seat }}
+            </label><br>
+        {% endfor %}
+        <button type="submit">Book Selected Seat</button>
+    </form>
+</body>
+</html>
