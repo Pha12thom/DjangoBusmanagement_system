@@ -115,6 +115,8 @@ def seat_selection(request):
     seats = range(1, 13)
     return render(request, 'selection.html', {'seats': seats})
 
+
+
 def book_seat(request, seat_number):
     # Your logic to handle booking form submission goes here
     if request.method == 'POST':
@@ -132,8 +134,11 @@ def book_seat(request, seat_number):
         )
         
         return redirect('confirm_booking', seat_number=seat_number)
-
     return render(request, 'seat.html', {'seat_number': seat_number})
+
+
+
+
 
 def confirm_booking(request, seat_number):
     # Your logic to display booking confirmation details goes here
