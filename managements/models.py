@@ -89,9 +89,7 @@ CITIES_GROUPS = [
 
 CITIES = [(city, city) for group in CITIES_GROUPS for city in group ]
 
-# bus_booking/models.py
-from django.db import models
-
+# bus_booking
 class Booking(models.Model):
     customer_name = models.CharField(max_length=255)
     seat_number = models.IntegerField()
