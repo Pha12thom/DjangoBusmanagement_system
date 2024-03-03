@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Bus, Route, Schedule, Ticket, Payment, UserProfile, Testing
+from .models import Bus, Route, Schedule, Ticket, Payment, UserProfile, Testing, Booking
 
 class BusDetails(admin.ModelAdmin):
     def details():
@@ -13,4 +13,5 @@ admin.site.register(Schedule)
 admin.site.register(Ticket)
 admin.site.register(Payment)
 admin.site.register(UserProfile)
+admin.site.register(Booking)
 
