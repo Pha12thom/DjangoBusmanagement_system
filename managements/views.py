@@ -106,19 +106,13 @@ def bus_detail(request, bus_id):
 
 
 
-# bus_booking/views.py
-from django.shortcuts import render, redirect
-from .models import Booking
-
 def seat_selection(request):
-    # Your logic to retrieve seat information goes here
     seats = range(1, 13)
     return render(request, 'selection.html', {'seats': seats})
 
 
 
 def book_seat(request, seat_number):
-    #logic to handle booking form submission goes here
     if request.method == 'POST':
     
         customer_name = request.POST.get('customer_name')
@@ -140,8 +134,7 @@ def book_seat(request, seat_number):
 
 
 
-def confirm_booking(request, seat_number):
-    #  display booking confirmation 
+def confirm_booking(request, seat_number): 
     booking = Booking.objects.get(seat_number=seat_number)
     return render(request, 'booking.html', {'booking': booking})
 
