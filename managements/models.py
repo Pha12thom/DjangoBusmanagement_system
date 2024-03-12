@@ -2,7 +2,6 @@ from django.db import models
 from django import forms
 from django.contrib.auth.models import User
 
-
 class choices(models.Model):
     names= models.Choices
 
@@ -13,7 +12,17 @@ CITIES_GROUPS = [
     ('Thika',  'Turkana' ),
 ]
 CITIES = [(city, city) for group in CITIES_GROUPS for city in group ]
+PAYMENT = [
+    (1500, 1700, 1800, 1900, 20000),
+    
+]
+PAY = [(pay,pay) for group in PAYMENT for pay in group ]
 
+METHODS = [
+    ('AIRTEL MOBILE', 'ATM', 'BANK TRANSFER','MPESA'),
+
+]
+WAY = [(method, method) for group in METHODS for method in group ]
 class Bus(models.Model):
     name = models.CharField(max_length=150)
     color = models.CharField(max_length=150)
@@ -25,15 +34,16 @@ class Bus(models.Model):
     depart_time = models.TimeField(null=True)
     
     def __str__(self):
-        return f"{self.name }  {self.no_plate} {self.seats} {self.departure_city} {self.departure_time}"
+        return f"\t{self.name }  \t{self.no_plate} \t{self.seats} \t{self.departure_city} \t{self.departure_time}"
     
 class Route(models.Model):
-    departure_city = models.CharField(max_length=100)
-    arrival_city = models.CharField(max_length=150)
+    departure_city = models.CharField(max_length=150, choices=CITIES)
+    arrival_city = models.CharField(max_length=100, null=True, choices=CITIES)
     distance = models.FloatField() 
     timeTaken = models.DurationField()
     buses = models.ManyToManyField(Bus, related_name='routes')  # Many-to-many relationship with Bus model
-
+    def __str__(self):
+        return f"\t from {self.departure_city}  \t{self.distance}km to  \t{self.arrival_city} bus \t{self.buses}"
 
 
 #schedule model 
@@ -43,7 +53,8 @@ class Schedule(models.Model):
     arrivalTime = models.DateTimeField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
     route = models.ForeignKey(Route, on_delete= models.CASCADE)
-
+    def __str__(self):
+        return f"\t{self.route}  \t{self.price} \t{self.arrivalTime} \t{self.bus}"
 
 #Ticket model 
 class Ticket(models.Model):
@@ -53,13 +64,14 @@ class Ticket(models.Model):
     passengerAge= models.IntegerField()
     gender=models.CharField(max_length=100)
     user=models.ForeignKey(User, on_delete=models.CASCADE)
+    pay = models.IntegerField(null=True, choices=PAY)
     
         
 
 #payment model   
 class Payment(models.Model):
     ticket = models.OneToOneField(Ticket, on_delete=models.CASCADE)
-    paymentMethod = models.CharField(max_length=100)
+    paymentMethod = models.CharField(max_length=100, choices=WAY)
     transactionId= models.CharField(max_length=100)
     amount=models.DecimalField(max_digits=8, decimal_places=2)
     
@@ -80,18 +92,12 @@ class Testing(models.Model):
     license = models.CharField(max_length=100)
     name = models.CharField(max_length= 100)
     
-CITIES_GROUPS = [
-    ('Nairobi', 'Kisumu', 'Mombasa','Nakuru'),
-    ('Siaya', 'Meru', 'Kisii', 'Bungoma'),
-    ('Narok', 'Nyeri', 'Migori', 'Busia'),
-    ('Thika',  'Turkana', 'Kitengela'),
-]
 
-CITIES = [(city, city) for group in CITIES_GROUPS for city in group ]
 
-# bus_booking
-class Booking(models.Model):
-    customer_name = models.CharField(max_length=255)
-    seat_number = models.IntegerField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    booking_date = models.DateField()
+
+class Seat(models.Model):
+    seat_number = models.IntegerField(unique=True)
+    booked = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'Seat {self.seat_number}'
