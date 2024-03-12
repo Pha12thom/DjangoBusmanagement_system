@@ -66,6 +66,9 @@ class Ticket(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     pay = models.IntegerField(null=True, choices=PAY)
     
+    def __str__(self):
+        return f"{self.passenger_name} {self.schedule} {self.seat_no} {self.gender} {self.user}{self.pay}"
+    
         
 
 #payment model   
