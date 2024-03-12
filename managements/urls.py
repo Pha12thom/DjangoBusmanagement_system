@@ -9,5 +9,6 @@ urlpatterns = [
     path('search_routes/', views.search_routes, name='search_routes'),
     path('search_form/', views.search_form, name='search_form'),
     path('booking/', views.booking, name='booking'),
+    path('ticket/<int:ticket_id>/', views.print_ticket, name='print_ticket'),
 
 ]
