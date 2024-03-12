@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+    <!-- Include any CSS styles for your ticket here -->
+</head>
+<body>
+    <h1>Ticket Details</h1>
+    <p><strong>Passenger Name:</strong> {{ ticket.passenger_name }}</p>
+    <p><strong>Departure Time:</strong> {{ ticket.schedule.departTime }}</p>
+    <p><strong>Arrival Time:</strong> {{ ticket.schedule.arrivalTime }}</p>
+    <!-- Add more ticket details as needed -->
+
+    <button onclick="window.print()">Print Ticket</button> <!-- Add a print button -->
+</body>
+</html>
