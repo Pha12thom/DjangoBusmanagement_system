@@ -43,7 +43,14 @@ class SearchForm(forms.Form):
         widget=forms.DateInput(attrs={'type': 'date'})
         )
 
-    
+from django import forms
+from .models import Ticket
+
+class TicketForm(forms.ModelForm):
+    class Meta:
+        model = Ticket
+        fields = ['schedule', 'seat_no', 'passenger_name', 'passengerAge', 'gender']
+
 """
 class BusSearchForm(forms.Form):
     search_date = forms.DateField(label='Search Date')
