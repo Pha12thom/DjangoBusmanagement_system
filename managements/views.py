@@ -1,11 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
-from .forms import RegistrationForm, LoginForm,  SearchForm
+from .forms import RegistrationForm, LoginForm,  SearchForm, BookingForm
+
 from django.contrib.auth.models import User
-from .models import Route, Bus, UserProfile
-
-
+from .models import Route, Bus, UserProfile,  Schedule, Ticket
 
 
 
@@ -29,9 +28,9 @@ def register(request):
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
 
+ 
 
-
-def login(request):
+def login(request): 
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -67,7 +66,6 @@ def search_routes(request):
 
 
 
-
 #1 search
 def search_form(request):
     if request.method == 'POST':
@@ -84,58 +82,15 @@ def search_form(request):
 
 
 
-
-
-
-#3 search
-def bus_detail(request):
-    buses = Bus.objects.all()
-    context = {
-        'Bus': buses
-    }
-    return render(request, 'bus_detail.html', context)
-
-# In your views.py
-from django.shortcuts import render, get_object_or_404
-from .models import Bus
-
-def bus_detail(request, bus_id):
-    bus = get_object_or_404(Bus, pk=bus_id)
-    return render(request, 'bus_detail.html', {'bus': bus})
-
-
-
-
-def seat_selection(request):
-    seats = range(1, 13)
-    return render(request, 'selection.html', {'seats': seats})
-
-
-
-def book_seat(request, seat_number):
+def booking(request, id):
+    schedule = Schedule.objects.all()
     if request.method == 'POST':
-    
-        customer_name = request.POST.get('customer_name')
-        price = request.POST.get('price')
-        booking_date = request.POST.get('booking_date')
-        
-        # Save booking details to the database
-        booking = Booking.objects.create(
-            customer_name=customer_name,
-            seat_number=seat_number,
-            price=price,
-            booking_date=booking_date
-        )
-        
-        return redirect('confirm_booking', seat_number=seat_number)
-    return render(request, 'seat.html', {'seat_number': seat_number})
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            ticket = form.save(commit=False)
+            ticket.schedule = schedule  
+            return redirect('booking_success') 
+    else:
+        form = BookingForm()
+    return render(request, 'booking_form.html', {'form': form, 'schedule': schedule})
 
-
-
-
-
-def confirm_booking(request, seat_number): 
-    booking = Booking.objects.get(seat_number=seat_number)
-    return render(request, 'booking.html', {'booking': booking})
-
-    
