@@ -94,3 +94,6 @@ def booking(request, id):
         form = BookingForm()
     return render(request, 'booking_form.html', {'form': form, 'schedule': schedule})
 
+def print_ticket(request, ticket_id):
+    ticket = Ticket.objects.get(id=ticket_id)
+    return render(request, 'ticket.html', {'ticket': ticket})
