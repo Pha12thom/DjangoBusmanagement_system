@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Ticket Details</title>
+</head>
+<body>
+    <h1>Enter Ticket Details</h1>
+    <form action="{% url 'save_ticket' %}" method="post">
+        {% csrf_token %}
+        <label for="schedule">Schedule:</label>
+        <select name="schedule" id="schedule">
+            {% for schedule in schedules %}
+            <option value="{{ schedule.id }}">{{ schedule }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="seat_no">Seat Number:</label>
+        <input type="text" id="seat_no" name="seat_no"><br><br>
+
+        <label for="passenger_name">Passenger Name:</label>
+        <input type="text" id="passenger_name" name="passenger_name"><br><br>
+
+        <label for="passengerAge">Passenger Age:</label>
+        <input type="number" id="passengerAge" name="passengerAge"><br><br>
+
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+        {% csrf_token %}
+        <label for="pay">Payment Amount:</label>
+        <select name="pay" id="pay">
+            {% for paying in pays %}
+            <option value="{{ paying.pay }}">{{ paying.pay }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit" >Save Ticket</button>
+    </form>
+</body>
+</html>

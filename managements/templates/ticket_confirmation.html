@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Confirmation</title>
+</head>
+<body>
+    <h1>Ticket Confirmation</h1>
+    <p>Your ticket has been successfully saved.</p>
+    <p>Seat Number: {{ ticket.seat_no }}</p>
+    <p>Passenger Name: {{ ticket.passenger_name }}</p>
+    <p>Passenger Age: {{ ticket.passengerAge }}</p>
+    <p>Gender: {{ ticket.gender }}</p>
+    <p>Payment Amount: {{ ticket.pay }}</p>
+    
+    <button onclick="window.print()">Print Ticket</button>
+</body>
+</html>
