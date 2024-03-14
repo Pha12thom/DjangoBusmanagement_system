@@ -141,6 +141,9 @@ def book_ticket(request, schedule_id):
     return render(request, 'book_ticket.html', {'form': form, 'schedule': schedule})
 
 
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def save_ticket(request):
     if request.method == 'POST':
         schedule_id = request.POST.get('schedule')
@@ -148,11 +151,10 @@ def save_ticket(request):
         passenger_name = request.POST.get('passenger_name')
         passenger_age = request.POST.get('passengerAge')
         gender = request.POST.get('gender')
-        pay = request.POST.get('pay')
-        
+        pay = request.POST.get('paying.pay')
         schedule = Schedule.objects.get(id=schedule_id)
-         # Assuming you have authentication enabled
-
+        user = request.user  # Get the authenticated user
+        
         # Create a new Ticket object and save it to the database
         ticket = Ticket.objects.create(
             schedule=schedule,
@@ -160,27 +162,25 @@ def save_ticket(request):
             passenger_name=passenger_name,
             passengerAge=passenger_age,
             gender=gender,
+            user=user,  # Assign the authenticated user
             pay=pay
         )
-        
         # Redirect the user to the ticket confirmation page
-        return redirect('ticket_confirmation', ticket_id=ticket.id)
-
+        return redirect('ticket_confirmation')
     # Fetch schedules to display in the form
     schedules = Schedule.objects.all()
     pays = Ticket.objects.all()
     return render(request, 'ticket_form.html', {'schedules': schedules, 'pays': pays})
 
 
-
-
 def ticket_confirmation(request):
     # Fetch the last ticket added to the database
     last_ticket = Ticket.objects.order_by('-id').first()
-    
     if last_ticket:
         return render(request, 'ticket_confirmation.html', {'ticket': last_ticket})
     else:
+        
+        
         # Handle case where there are no tickets in the database
         return render(request, 'ticket_confirmation.html', {'ticket': None})
 
