@@ -43,7 +43,7 @@ class Route(models.Model):
     timeTaken = models.DurationField()
     buses = models.ManyToManyField(Bus, related_name='routes')  # Many-to-many relationship with Bus model
     def __str__(self):
-        return f"\t from {self.departure_city}  \t{self.distance}km to  \t{self.arrival_city} bus \t{self.buses}"
+        return f"\t from {self.departure_city}  \t{self.distance}km to  \t{self.arrival_city}"
 
 
 #schedule model 
@@ -54,7 +54,7 @@ class Schedule(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     route = models.ForeignKey(Route, on_delete= models.CASCADE)
     def __str__(self):
-        return f"\t{self.route}  \t{self.price} \t{self.arrivalTime} \t{self.bus}"
+        return f"\t{self.price} \t{self.arrivalTime} \t{self.bus}"
 
 #Ticket model 
 class Ticket(models.Model):
