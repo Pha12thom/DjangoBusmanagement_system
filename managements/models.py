@@ -32,7 +32,7 @@ class Bus(models.Model):
     arrival_city = models.CharField(max_length=100, null=True, choices=CITIES)
     departure_time = models.DateField()  # Updated field to use DateTimeField
     depart_time = models.TimeField(null=True)
-    
+    is_available = models.BooleanField(null=True)
     def __str__(self):
         return f"\t{self.name }  \t{self.no_plate} \t{self.seats} \t{self.departure_city} \t{self.departure_time}"
     
