@@ -167,7 +167,8 @@ def save_ticket(request):
     # Fetch schedules to display in the form
     schedules = Schedule.objects.all()
     pays = Ticket.objects.all()
-    return render(request, 'ticket_form.html', {'schedules': schedules, 'pays': pays})
+    buses = Bus.objects.all()
+    return render(request, 'ticket_form.html', {'schedules': schedules, 'pays': pays,  'buses': buses})
 
 
 def ticket_confirmation(request):
