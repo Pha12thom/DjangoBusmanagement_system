@@ -71,3 +71,12 @@ main {
 .book-ticket:hover {
     background-color: #45a049;
 }
+footer {
+    background-color: #172029;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
