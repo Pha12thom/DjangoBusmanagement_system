@@ -23,7 +23,7 @@
                 {% for bus in matching_buses %}
                     <li class="bus-item">
                         <div class="bus-info">
-                            <p><strong>available seats:</strong> {{ bus.is_available }}</p>
+                            <p><strong>bus available:</strong> {{ bus.is_available }}</p>
                             <h2>{{ bus.name }}</h2>
                             <p><strong>Bus No:</strong> {{ bus.id }}</p>
                             <p><strong>From:</strong> {{ bus.departure_city }} - <strong>To:</strong> {{ bus.arrival_city }}</p>
