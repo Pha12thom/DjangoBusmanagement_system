@@ -34,7 +34,7 @@ class Bus(models.Model):
     depart_time = models.TimeField(null=True)
     is_available = models.BooleanField(default=False, null=True, verbose_name="is_available")
     def __str__(self):
-        return f"\t{self.name }  \t{self.no_plate} \t{self.seats}  from \t{self.departure_city} at \t{self.departure_time} to \t{self.arrival_city}"
+        return f" \t{self.name }  \t{self.no_plate} \t{self.seats}  from \t{self.departure_city} at \t{self.departure_time} to \t{self.arrival_city}"
     
 class Route(models.Model):
     departure_city = models.CharField(max_length=150, choices=CITIES)
