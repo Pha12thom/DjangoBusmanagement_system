@@ -30,7 +30,7 @@ class Bus(models.Model):
     seats = models.IntegerField()
     departure_city = models.CharField(max_length=150, choices=CITIES)
     arrival_city = models.CharField(max_length=100, null=True, choices=CITIES)
-    departure_time = models.DateField()  # Updated field to use DateTimeField
+    departure_time = models.DateField()  
     depart_time = models.TimeField(null=True)
     is_available = models.BooleanField(default=False, null=True, verbose_name="is_available")
     def __str__(self):
@@ -41,7 +41,7 @@ class Route(models.Model):
     arrival_city = models.CharField(max_length=100, null=True, choices=CITIES)
     distance = models.FloatField() 
     timeTaken = models.DurationField()
-    buses = models.ManyToManyField(Bus, related_name='routes')  # Many-to-many relationship with Bus model
+    buses = models.ManyToManyField(Bus, related_name='routes')
     def __str__(self):
         return f"\t from {self.departure_city}  \t{self.distance}km to  \t{self.arrival_city}"
 
