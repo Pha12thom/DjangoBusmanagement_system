@@ -17,7 +17,8 @@ The Bus Management System is a comprehensive solution designed to streamline bus
 
 ## Installation
 0. Fork this repository
-1. Clone the repository: `git clone https://github.com/pha12thom/DjangoBusmanagement_system.git
+1. Clone the repository:
+    'git clone https://github.com/pha12thom/DjangoBusmanagement_system.git'
 4. Install dependencies: `pip install -r requirements.txt`
 5. Perform database migrations: `python manage.py migrate`
 6. Create a superuser for admin access: `python manage.py createsuperuser`
