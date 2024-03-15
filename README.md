@@ -17,13 +17,12 @@ The Bus Management System is a comprehensive solution designed to streamline bus
 
 ## Installation
 0. Fork this repository
-1. Clone the repository: `git clone https://github.com/pha12thom/bus-management-system.git`
-2. Navigate to the project directory: `cd busmanagementsystem`
-3. Install dependencies: `pip install -r requirements.txt`
-4. Perform database migrations: `python manage.py migrate`
-5. Create a superuser for admin access: `python manage.py createsuperuser`
-6. Run the development server: `python manage.py runserver`
-7. Access the application in your web browser: `http://localhost:8000`
+1. Clone the repository: `git clone https://github.com/pha12thom/DjangoBusmanagement_system.git
+4. Install dependencies: `pip install -r requirements.txt`
+5. Perform database migrations: `python manage.py migrate`
+6. Create a superuser for admin access: `python manage.py createsuperuser`
+7. Run the development server: `python manage.py runserver`
+8. Access the application in your web browser: `http://localhost:8000`
 
 ## Usage
 1. Access the admin panel by navigating to `/admin` and login with your superuser credentials.
