@@ -102,6 +102,9 @@
 <body>
     <header>
         <h1>Search for Vehicles</h1>
+        <div class="link">
+            <a class="back-button" href="{% url 'home' %}">Back</a>
+        </div>
     </header>
     <div class="container">
         <form method="POST">
@@ -109,9 +112,7 @@
             {{ form.as_p }}
             <button type='submit'>Search</button>
         </form>
-        <div class="link">
-            <a class="back-button" href="{% url 'home' %}">Back</a>
-        </div>
+        
     </div>
     <footer>
         &copy; 2024 Your Company. All rights reserved.
