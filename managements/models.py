@@ -13,7 +13,7 @@ CITIES_GROUPS = [
 ]
 CITIES = [(city, city) for group in CITIES_GROUPS for city in group ]
 PAYMENT = [
-    (1500, 1700, 1800, 1900, 20000),
+    (1500, 1700),
     
 ]
 PAY = [(pay,pay) for group in PAYMENT for pay in group ]
@@ -32,7 +32,7 @@ class Bus(models.Model):
     arrival_city = models.CharField(max_length=100, null=True, choices=CITIES)
     departure_time = models.DateField()  # Updated field to use DateTimeField
     depart_time = models.TimeField(null=True)
-    is_available = models.BooleanField(null=True)
+    is_available = models.BooleanField(default=False, null=True, verbose_name="is_available")
     def __str__(self):
         return f"\t{self.name }  \t{self.no_plate} \t{self.seats} \t{self.departure_city} \t{self.departure_time}"
     
@@ -54,7 +54,7 @@ class Schedule(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     route = models.ForeignKey(Route, on_delete= models.CASCADE)
     def __str__(self):
-        return f"\t{self.price} \t{self.arrivalTime} \t{self.bus}"
+        return f"price is \t{self.price} departs at \t{self.departTime} "
 
 #Ticket model 
 class Ticket(models.Model):
