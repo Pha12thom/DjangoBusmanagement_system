@@ -22,6 +22,7 @@
                 <ul>
                 {% for bus in matching_buses %}
                     <li class="bus-item">
+                        <img src="{% static 'images/bus1.jpeg' %}" alt="Logo">
                         <div class="bus-info">
                             <p><strong>bus available:</strong> {{ bus.is_available }}</p>
                             <h2>{{ bus.name }}</h2>
@@ -41,6 +42,9 @@
             {% endif %}
         </section>
     </main>
+    <footer>
+        &copy; 2024 Travel Agency. All rights reserved.
+    </footer>
 </body>
 </html>
 
