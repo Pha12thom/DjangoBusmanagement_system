@@ -141,9 +141,6 @@ def book_ticket(request, schedule_id):
     return render(request, 'book_ticket.html', {'form': form, 'schedule': schedule})
 
 
-from django.contrib.auth.decorators import login_required
-
-@login_required
 def save_ticket(request):
     if request.method == 'POST':
         schedule_id = request.POST.get('schedule')
@@ -179,8 +176,6 @@ def ticket_confirmation(request):
     if last_ticket:
         return render(request, 'ticket_confirmation.html', {'ticket': last_ticket})
     else:
-        
-        
         # Handle case where there are no tickets in the database
         return render(request, 'ticket_confirmation.html', {'ticket': None})
 
