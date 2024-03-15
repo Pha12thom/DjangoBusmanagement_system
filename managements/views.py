@@ -148,10 +148,11 @@ def save_ticket(request):
         passenger_name = request.POST.get('passenger_name')
         passenger_age = request.POST.get('passengerAge')
         gender = request.POST.get('gender')
-        pay = request.POST.get('paying.pay')
+        pay = request.POST.get('pay')  # Fixing the line to get 'pay'
         schedule = Schedule.objects.get(id=schedule_id)
-        user = request.user  # Get the authenticated user
-        
+        user = request.user
+        bus_id = request.POST.get('bus')  # Getting the ID of the selected bus
+        bus = Bus.objects.get(id=bus_id)  # Retrieving the Bus object
         # Create a new Ticket object and save it to the database
         ticket = Ticket.objects.create(
             schedule=schedule,
@@ -160,10 +161,12 @@ def save_ticket(request):
             passengerAge=passenger_age,
             gender=gender,
             user=user,  # Assign the authenticated user
-            pay=pay
+            pay=pay,
+            bus=bus  # Assign the retrieved Bus object
         )
         # Redirect the user to the ticket confirmation page
         return redirect('ticket_confirmation')
+    
     # Fetch schedules to display in the form
     schedules = Schedule.objects.all()
     pays = Ticket.objects.all()
