@@ -63,11 +63,15 @@
         <h1>Ticket Confirmation</h1>
         <div class="ticket-details">
             <p>Your ticket has been successfully saved.</p>
+            <b><p>Bus details:</p></b>
+            <b>{{ ticket.bus }}</b>
+            
             <p>Seat Number: {{ ticket.seat_no }}</p>
             <p>Passenger Name: {{ ticket.passenger_name }}</p>
             <p>Passenger Age: {{ ticket.passengerAge }}</p>
             <p>Gender: {{ ticket.gender }}</p>
             <p>Payment Amount: {{ ticket.pay }}</p>
+
         </div>
         <button onclick="window.print()">Print Ticket</button>
     </div>
