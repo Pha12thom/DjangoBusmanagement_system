@@ -34,7 +34,7 @@ class Bus(models.Model):
     depart_time = models.TimeField(null=True)
     is_available = models.BooleanField(default=False, null=True, verbose_name="is_available")
     def __str__(self):
-        return f"\t{self.name }  \t{self.no_plate} \t{self.seats} \t{self.departure_city} \t{self.departure_time}"
+        return f"\t{self.name }  \t{self.no_plate} \t{self.seats}  from \t{self.departure_city} at \t{self.departure_time} to \t{self.arrival_city}"
     
 class Route(models.Model):
     departure_city = models.CharField(max_length=150, choices=CITIES)
@@ -65,6 +65,7 @@ class Ticket(models.Model):
     gender=models.CharField(max_length=100)
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     pay = models.IntegerField(null=True, choices=PAY)
+    bus=models.ForeignKey(Bus, on_delete=models.CASCADE,null=True)
     
     def __str__(self):
         return f"{self.passenger_name} {self.schedule} {self.seat_no} {self.gender} {self.user}{self.pay}"
