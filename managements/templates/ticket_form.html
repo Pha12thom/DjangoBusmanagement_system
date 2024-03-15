@@ -97,8 +97,15 @@
         <h1>Enter Ticket Details</h1>
     </header>
     <div class="container">
+
         <form action="{% url 'save_ticket' %}" method="post" onsubmit="showLoader()">
             {% csrf_token %}
+            <label for="bus">select bus:</label>
+            <select name="bus" id="bus">
+                {% for bus in buses %}
+                <option value="{{ bus }}">{{ bus }} availability {{ bus.is_available}}</option>
+                {% endfor %}
+            </select>
             <label for="schedule">Schedule:</label>
             <select name="schedule" id="schedule">
                 {% for schedule in schedules %}
