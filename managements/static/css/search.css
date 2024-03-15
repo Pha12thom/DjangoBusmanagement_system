@@ -14,7 +14,12 @@ header {
 }
 
 header h1 {
+    display: flex;
     margin: 0;
+}
+header li {
+    margin: 0;
+    color: #45a049;
 }
 
 nav ul {
@@ -29,7 +34,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #17502d;
     text-decoration: none;
 }
 
