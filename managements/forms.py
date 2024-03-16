@@ -43,8 +43,7 @@ class SearchForm(forms.Form):
         widget=forms.DateInput(attrs={'type': 'date'})
         )
 
-from django import forms
-from .models import Ticket
+
 
 class TicketForm(forms.Form):
     passenger_name = forms.CharField(max_length=100)
