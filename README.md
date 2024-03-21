@@ -1,3 +1,4 @@
+![bus](https://github.com/Pha12thom/DjangoBusmanagement_system/assets/122834673/fba210a0-28b8-42eb-8047-89fe070a53d5)
 # Bus Management System By Milugo Geofrey Ouma(Django)
 
 Welcome to the Bus Management System, a web application i built using Django!
